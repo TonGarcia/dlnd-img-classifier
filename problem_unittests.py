@@ -3,13 +3,18 @@ import numpy as np
 import tensorflow as tf
 import random
 from unittest.mock import MagicMock
+
+from tensorflow.contrib.keras.api.keras.datasets import cifar10
+
 cifar10_dataset_folder_path = 'cifar-10-batches-py'
 
 def _print_success_message():
     print('Tests Passed')
 
 
-def test_folder_path():
+def test_folder_path(cifar10_dataset_folder_path):
+    if cifar10_dataset_folder_path == None:
+        cifar10_dataset_folder_path = 'cifar-10-batches-py'
     assert cifar10_dataset_folder_path is not None,\
         'Cifar-10 data folder not set.'
     assert cifar10_dataset_folder_path[-1] != '/',\
